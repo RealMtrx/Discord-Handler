@@ -1,22 +1,43 @@
 # Installation
 
-Each Discord Handler implementation is self-contained in its own repository. Choose your preferred language and follow the instructions below.
+Each Discord Handler implementation is self-contained in its own repository. Choose your preferred language and database edition and follow the instructions below.
+
+> **Version 0.9.0 (Beta)** — Both **MongoDB** and **SQL** editions are available for every language.
 
 ## Prerequisites
 
 - A Discord application and bot token ([Discord Developer Portal](https://discord.com/developers/applications))
 - The appropriate runtime for your chosen language
+- (SQL edition only) SQLite, PostgreSQL, or MySQL/MariaDB
+
+## Quick Reference
+
+| Edition | Repository Pattern |
+| ------- | ------------------ |
+| MongoDB | `Discord-Handler-{Lang}` |
+| SQL     | `Discord-Handler-{Lang}-Sequelize` |
 
 ## Language-Specific Setup
 
 ### JavaScript
 
+**MongoDB edition:**
 ```bash
 git clone https://github.com/RealMtrx/Discord-Handler-Js.git
 cd Discord-Handler-Js
 npm install
 cp .env.example .env
 # Edit .env with your token
+npm start
+```
+
+**SQL edition (Sequelize):**
+```bash
+git clone https://github.com/RealMtrx/Discord-Handler-Js-Sequelize.git
+cd Discord-Handler-Js-Sequelize
+npm install
+cp .env.example .env
+# Edit .env with your token and database settings
 npm start
 ```
 

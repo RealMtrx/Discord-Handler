@@ -1,26 +1,30 @@
 <div align="center">
   <img src="assets/images/logo.png" alt="Discord Handler Logo" width="120" height="120">
   <h1>Discord Handler</h1>
-  <p><strong>A multi-language Discord bot framework — choose your language, build your bot.</strong></p>
+  <p><strong>The official multi-language Discord bot framework — 13 languages, MongoDB + SQL, one architecture.</strong></p>
 
   <p>
     <a href="https://github.com/RealMtrx/Discord-Handler/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
-    <a href="https://github.com/RealMtrx/Discord-Handler/releases"><img src="https://img.shields.io/github/v/release/RealMtrx/Discord-Handler" alt="Version"></a>
+    <a href="https://github.com/RealMtrx/Discord-Handler/releases"><img src="https://img.shields.io/badge/version-0.9.0--beta-yellow" alt="Version 0.9.0 Beta"></a>
     <a href="https://github.com/RealMtrx/Discord-Handler/stargazers"><img src="https://img.shields.io/github/stars/RealMtrx/Discord-Handler" alt="Stars"></a>
     <a href="https://github.com/RealMtrx/Discord-Handler/issues"><img src="https://img.shields.io/github/issues/RealMtrx/Discord-Handler" alt="Issues"></a>
     <a href="https://github.com/RealMtrx/Discord-Handler/pulls"><img src="https://img.shields.io/github/issues-pr/RealMtrx/Discord-Handler" alt="Pull Requests"></a>
     <a href="https://github.com/RealMtrx/Discord-Handler/network"><img src="https://img.shields.io/github/forks/RealMtrx/Discord-Handler" alt="Forks"></a>
     <a href="https://github.com/RealMtrx/Discord-Handler/graphs/contributors"><img src="https://img.shields.io/github/contributors/RealMtrx/Discord-Handler" alt="Contributors"></a>
+    <a href="#"><img src="https://img.shields.io/badge/implementations-26-brightgreen" alt="26 Implementations"></a>
+    <a href="#"><img src="https://img.shields.io/badge/languages-13-blue" alt="13 Languages"></a>
+    <a href="#"><img src="https://img.shields.io/badge/database-MongoDB%20%7C%20SQL-orange" alt="MongoDB + SQL"></a>
   </p>
 
   <br>
 
   <p>
+    <a href="#-ecosystem-overview">Ecosystem</a> •
     <a href="#-languages">Languages</a> •
+    <a href="#-database-editions">Database Editions</a> •
     <a href="#-features">Features</a> •
     <a href="#-quick-start">Quick Start</a> •
     <a href="#-documentation">Documentation</a> •
-    <a href="#-faq">FAQ</a> •
     <a href="#-roadmap">Roadmap</a> •
     <a href="#-contributing">Contributing</a>
   </p>
@@ -30,10 +34,48 @@
 
 ## Introduction
 
-Discord Handler is an open-source, multi-language Discord bot framework designed for scalability and maintainability.  
-Whether you are a beginner writing your first bot in Python or a seasoned engineer deploying in Rust, Discord Handler provides a consistent, modular architecture across **13 programming languages**.
+**Discord Handler** is the official open-source, multi-language Discord bot framework for building scalable, production-ready bots. Every implementation follows the same modular architecture — slash commands, prefix commands, database integration, anti-crash protection, webhook logging, and a clean `src/` directory — so you can switch languages without relearning the architecture.
 
-Each implementation follows the same design principles — slash commands, prefix commands, MongoDB integration, anti-crash protection, webhook logging, and a clean `src/` structure — so you can switch languages without relearning architecture.
+The ecosystem includes **26 individual repositories**: **13 Core Framework editions** (MongoDB) and **13 Database Editions** (SQL), covering 13 programming languages with feature parity across all implementations.
+
+> **Current Version: 0.9.0 (Stable Beta)** — All 26 implementations are production-ready for testing. See the [v1.0.0 Release Checklist](ROADMAP.md#v100-release-checklist) for the stable release roadmap.
+
+---
+
+## Ecosystem Overview
+
+The Discord Handler ecosystem is organized into three layers:
+
+```
+                    ┌────────────────────────────────────────────────┐
+                    │           Discord Handler (Hub)                 │
+                    │  github.com/RealMtrx/Discord-Handler           │
+                    │  Documentation • Guides • Examples • Roadmap   │
+                    └────────────────────────────────────────────────┘
+                                      │
+            ┌─────────────────────────┼─────────────────────────────┐
+            │                         │                             │
+            ▼                         ▼                             ▼
+  ┌─────────────────────┐   ┌─────────────────────┐       ┌─────────────────────┐
+  │   Core Framework    │   │  Database Editions   │       │   Shared Assets     │
+  │   (MongoDB)         │   │  (SQL)               │       │                     │
+  │   13 repos          │   │  13 repos            │       │  .github templates  │
+  │                     │   │                      │       │  docs/              │
+  │  Each lang has its  │   │  Each lang has its   │       │  examples/          │
+  │  own repo with full │   │  own repo using the  │       │  assets/            │
+  │  framework + Mongo  │   │  same architecture   │       │                     │
+  └─────────────────────┘   └─────────────────────┘       └─────────────────────┘
+```
+
+### How they relate
+
+| Layer | Purpose |
+| ----- | ------- |
+| **Hub Repository** | Central entry point — documentation, examples, changelog, roadmap, and community guides |
+| **Core Framework (MongoDB)** | 13 language-specific repos, each with the full framework + MongoDB integration using the native MongoDB driver or ODM |
+| **Database Editions (SQL)** | 13 language-specific repos mirroring the Core Framework but with SQL backends (SQLite / PostgreSQL / MySQL) using each language's primary ORM |
+
+> You only need **one** implementation repo. Pick your language, pick your database — the hub has everything else.
 
 ---
 
@@ -44,8 +86,9 @@ Each implementation follows the same design principles — slash commands, prefi
 | Too many boilerplate setups  | Pre-built modular structure for every popular language      |
 | Switching languages          | Same architecture, same patterns, different syntax          |
 | Missing error handling       | Built-in anti-crash and webhook error reporting             |
-| No MongoDB integration       | Ready-to-use database layer in every implementation         |
+| No database integration      | Ready-to-use MongoDB and SQL database layers in every implementation |
 | Inconsistent project layout  | Standardized `src/` directory with clear separation of concerns |
+| Cross-language collaboration | Consistent patterns mean team members can work across languages |
 
 ---
 
@@ -54,7 +97,7 @@ Each implementation follows the same design principles — slash commands, prefi
 - **Dual Command System** — Slash commands and prefix commands in every language
 - **Modular Architecture** — Commands, events, handlers, and models are cleanly separated
 - **Anti-Crash Protection** — Comprehensive error handling that keeps your bot online
-- **MongoDB Integration** — Persistent data storage pre-configured in every implementation
+- **Dual Database Support** — MongoDB and SQL (SQLite, PostgreSQL, MySQL/MariaDB) editions available in every language
 - **Webhook Logging** — Real-time error and guild event reporting to Discord channels
 - **Cooldown System** — Per-command rate limiting to prevent spam
 - **Unicode Emoji System** — Flat-export emoji constants for consistent cross-platform rendering
@@ -73,7 +116,7 @@ src/
 ├── main.*                  # Entry point — initializes config, database, and client
 ├── config/                 # Environment variable loading and configuration object
 ├── Core/                   # Shared utilities (emojis, cooldowns, webhooks)
-├── Database/               # MongoDB connection and helpers
+├── Database/               # Database connection and helpers (MongoDB or SQL)
 ├── Events/                 # Discord event listeners (ready, guild, interaction, message)
 ├── Handlers/               # Anti-crash and logging subsystems
 ├── Models/                 # Data models for persistent storage
@@ -96,43 +139,73 @@ Discord Gateway → Event Handler → Dispatcher
 
 ## Languages
 
-| Language   | Repository                                       | Library          | Status |
-| ---------- | ------------------------------------------------ | ---------------- | ------ |
-| JavaScript | https://github.com/RealMtrx/Discord-Handler-Js   | Discord.js v14   | ✅     |
-| TypeScript | https://github.com/RealMtrx/Discord-Handler-Ts   | Discord.js v14   | ✅     |
-| Go         | https://github.com/RealMtrx/Discord-Handler-Go   | DiscordGo        | ✅     |
-| Rust       | https://github.com/RealMtrx/Discord-Handler-Rs   | Serenity         | ✅     |
-| Python     | https://github.com/RealMtrx/Discord-Handler-Py   | discord.py v2    | ✅     |
-| C#         | https://github.com/RealMtrx/Discord-Handler-Cs   | Discord.Net v3   | ✅     |
-| Java       | https://github.com/RealMtrx/Discord-Handler-Java | JDA v5           | ✅     |
-| Kotlin     | https://github.com/RealMtrx/Discord-Handler-Kt   | Kord             | ✅     |
-| C++        | https://github.com/RealMtrx/Discord-Handler-Cpp  | DPP              | ✅     |
-| Dart       | https://github.com/RealMtrx/Discord-Handler-Dart | Nyxx             | ✅     |
-| Ruby       | https://github.com/RealMtrx/Discord-Handler-Rb   | Discordrb        | ✅     |
-| Lua        | https://github.com/RealMtrx/Discord-Handler-Lua  | Discordia        | ✅     |
-| PHP        | https://github.com/RealMtrx/Discord-Handler-Php  | DiscordPHP       | ✅     |
+Every implementation is **v0.9.0 (Stable Beta)** — production-ready for testing.
+
+| # | Language   | Repository | Library | Version | Status |
+| - | ---------- | ---------- | ------- | ------- | ------ |
+| 1 | JavaScript | [Discord-Handler-Js](https://github.com/RealMtrx/Discord-Handler-Js) | Discord.js v14 | v0.9.0 | ✅ Stable Beta |
+| 2 | TypeScript | [Discord-Handler-Ts](https://github.com/RealMtrx/Discord-Handler-Ts) | Discord.js v14 | v0.9.0 | ✅ Stable Beta |
+| 3 | Go         | [Discord-Handler-Go](https://github.com/RealMtrx/Discord-Handler-Go) | DiscordGo | v0.9.0 | ✅ Stable Beta |
+| 4 | Rust       | [Discord-Handler-Rs](https://github.com/RealMtrx/Discord-Handler-Rs) | Serenity | v0.9.0 | ✅ Stable Beta |
+| 5 | Python     | [Discord-Handler-Py](https://github.com/RealMtrx/Discord-Handler-Py) | discord.py v2 | v0.9.0 | ✅ Stable Beta |
+| 6 | C#         | [Discord-Handler-Cs](https://github.com/RealMtrx/Discord-Handler-Cs) | Discord.Net v3 | v0.9.0 | ✅ Stable Beta |
+| 7 | Java       | [Discord-Handler-Java](https://github.com/RealMtrx/Discord-Handler-Java) | JDA v5 | v0.9.0 | ✅ Stable Beta |
+| 8 | Kotlin     | [Discord-Handler-Kt](https://github.com/RealMtrx/Discord-Handler-Kt) | Kord | v0.9.0 | ✅ Stable Beta |
+| 9 | C++        | [Discord-Handler-Cpp](https://github.com/RealMtrx/Discord-Handler-Cpp) | DPP | v0.9.0 | ✅ Stable Beta |
+| 10 | Dart       | [Discord-Handler-Dart](https://github.com/RealMtrx/Discord-Handler-Dart) | Nyxx | v0.9.0 | ✅ Stable Beta |
+| 11 | Ruby       | [Discord-Handler-Rb](https://github.com/RealMtrx/Discord-Handler-Rb) | Discordrb | v0.9.0 | ✅ Stable Beta |
+| 12 | Lua        | [Discord-Handler-Lua](https://github.com/RealMtrx/Discord-Handler-Lua) | Discordia | v0.9.0 | ✅ Stable Beta |
+| 13 | PHP        | [Discord-Handler-Php](https://github.com/RealMtrx/Discord-Handler-Php) | DiscordPHP | v0.9.0 | ✅ Stable Beta |
+
+---
+
+## Database Editions
+
+Every Core Framework language has a matching SQL edition. These repos replace MongoDB with SQLite (default), PostgreSQL, or MySQL/MariaDB using each language's native ORM or database library.
+
+All SQL editions are **v0.9.0 (Stable Beta)** — production-ready for testing.
+
+| # | Repository | Language | ORM / Library | Dialects | Version | Status |
+| - | ---------- | -------- | ------------- | -------- | ------- | ------ |
+| 1 | [Discord-Handler-Js-Sequelize](https://github.com/RealMtrx/Discord-Handler-Js-Sequelize) | JavaScript | Sequelize | SQLite, PostgreSQL, MySQL, MSSQL | v0.9.0 | ✅ Stable Beta |
+| 2 | [Discord-Handler-Ts-Sequelize](https://github.com/RealMtrx/Discord-Handler-Ts-Sequelize) | TypeScript | Sequelize | SQLite, PostgreSQL, MySQL, MSSQL | v0.9.0 | ✅ Stable Beta |
+| 3 | [Discord-Handler-Go-Sequelize](https://github.com/RealMtrx/Discord-Handler-Go-Sequelize) | Go | GORM | SQLite, PostgreSQL, MySQL | v0.9.0 | ✅ Stable Beta |
+| 4 | [Discord-Handler-Rs-Sequelize](https://github.com/RealMtrx/Discord-Handler-Rs-Sequelize) | Rust | Diesel | SQLite, PostgreSQL, MySQL | v0.9.0 | ✅ Stable Beta |
+| 5 | [Discord-Handler-Py-Sequelize](https://github.com/RealMtrx/Discord-Handler-Py-Sequelize) | Python | SQLAlchemy | SQLite, PostgreSQL, MySQL | v0.9.0 | ✅ Stable Beta |
+| 6 | [Discord-Handler-Cs-Sequelize](https://github.com/RealMtrx/Discord-Handler-Cs-Sequelize) | C# | EF Core | SQLite, PostgreSQL, MySQL | v0.9.0 | ✅ Stable Beta |
+| 7 | [Discord-Handler-Java-Sequelize](https://github.com/RealMtrx/Discord-Handler-Java-Sequelize) | Java | Hibernate | SQLite, PostgreSQL, MySQL | v0.9.0 | ✅ Stable Beta |
+| 8 | [Discord-Handler-Kt-Sequelize](https://github.com/RealMtrx/Discord-Handler-Kt-Sequelize) | Kotlin | Exposed | SQLite, PostgreSQL, MySQL | v0.9.0 | ✅ Stable Beta |
+| 9 | [Discord-Handler-Cpp-Sequelize](https://github.com/RealMtrx/Discord-Handler-Cpp-Sequelize) | C++ | sqlpp11 | SQLite, PostgreSQL, MySQL | v0.9.0 | ✅ Stable Beta |
+| 10 | [Discord-Handler-Dart-Sequelize](https://github.com/RealMtrx/Discord-Handler-Dart-Sequelize) | Dart | drift | SQLite, PostgreSQL, MySQL | v0.9.0 | ✅ Stable Beta |
+| 11 | [Discord-Handler-Rb-Sequelize](https://github.com/RealMtrx/Discord-Handler-Rb-Sequelize) | Ruby | Sequel | SQLite, PostgreSQL, MySQL | v0.9.0 | ✅ Stable Beta |
+| 12 | [Discord-Handler-Lua-Sequelize](https://github.com/RealMtrx/Discord-Handler-Lua-Sequelize) | Lua | LuaSQL | SQLite, PostgreSQL, MySQL | v0.9.0 | ✅ Stable Beta |
+| 13 | [Discord-Handler-Php-Sequelize](https://github.com/RealMtrx/Discord-Handler-Php-Sequelize) | PHP | Eloquent | SQLite, PostgreSQL, MySQL | v0.9.0 | ✅ Stable Beta |
 
 ---
 
 ## Quick Start
 
 ```bash
-# Clone any implementation
+# Choose your language (JavaScript example)
 git clone https://github.com/RealMtrx/Discord-Handler-Js.git
 cd Discord-Handler-Js
+
+# Or choose the SQL edition
+git clone https://github.com/RealMtrx/Discord-Handler-Js-Sequelize.git
+cd Discord-Handler-Js-Sequelize
 
 # Install dependencies
 npm install
 
 # Configure your bot
 cp .env.example .env
-# Edit .env with your token and settings
+# Edit .env with your bot token, client ID, and database settings
 
 # Run
 npm start
 ```
 
-Each language has its own repository with dedicated instructions. Pick yours from the table above.
+> All 26 repositories follow this same pattern. Pick your language and database from the tables above, clone the repo, install, configure, and run.
 
 ---
 
@@ -184,20 +257,26 @@ Discord-Handler/
 
 ## Comparison Table
 
+The table below covers the **Core Framework (MongoDB)** editions. The **Database (SQL) editions** share all features — swap MongoDB for SQLite / PostgreSQL / MySQL.
+
+All features are present in every language unless marked.
+
 | Feature                | JS  | TS  | Go  | Rust | Python | C#  | Java | Kotlin | C++ | Dart | Ruby | Lua | PHP |
 | ---------------------- | --- | --- | --- | ---- | ------ | --- | ---- | ------ | --- | ---- | ---- | --- | --- |
 | Slash Commands         | ✅  | ✅  | ✅  | ✅   | ✅     | ✅  | ✅   | ✅     | ✅  | ✅   | ✅   | ✅  | ✅  |
 | Prefix Commands        | ✅  | ✅  | ✅  | ✅   | ✅     | ✅  | ✅   | ✅     | ✅  | ✅   | ✅   | ✅  | ✅  |
 | MongoDB                | ✅  | ✅  | ✅  | ✅   | ✅     | ✅  | ✅   | ✅     | ⚠️  | ✅   | ✅   | ⚠️  | ✅  |
+| SQL (ORM per language) | ✅  | ✅  | ✅  | ✅   | ✅     | ✅  | ✅   | ✅     | ✅  | ✅   | ✅   | ✅  | ✅  |
 | Anti-Crash             | ✅  | ✅  | ✅  | ✅   | ✅     | ✅  | ✅   | ✅     | ✅  | ✅   | ✅   | ✅  | ✅  |
 | Webhook Logging        | ✅  | ✅  | ✅  | ✅   | ✅     | ✅  | ✅   | ✅     | ✅  | ✅   | ✅   | ✅  | ✅  |
 | Cooldowns              | ✅  | ✅  | ✅  | ✅   | ✅     | ✅  | ✅   | ✅     | ✅  | ✅   | ✅   | ✅  | ✅  |
 | Unicode Emojis         | ✅  | ✅  | ✅  | ✅   | ✅     | ✅  | ✅   | ✅     | ✅  | ✅   | ✅   | ✅  | ✅  |
 | Dynamic Command Loading| ✅  | ✅  | ✅  | ✅   | ✅     | ✅  | ✅   | ✅     | ✅  | ✅   | ✅   | ✅  | ✅  |
 | Async/Await            | ✅  | ✅  | ✅  | ✅   | ✅     | ✅  | ✅   | ✅     | ✅  | ✅   | ✅   | ⚠️  | ✅  |
+| Version                | 0.9 | 0.9 | 0.9 | 0.9  | 0.9    | 0.9 | 0.9  | 0.9    | 0.9 | 0.9  | 0.9  | 0.9 | 0.9 |
 
 > ⚠️ C++ and Lua MongoDB support are stubs (require mongocxx / luamongo respectively).  
-> Lua uses callbacks rather than native async/await.
+> ⚠️ Lua uses callbacks rather than native async/await.
 
 ---
 
@@ -515,9 +594,13 @@ Pick the language you are most comfortable with. All implementations share the s
 
 No. Each implementation is standalone. However, you can run multiple bots (each in a different language) under a single application.
 
-**Do I need MongoDB?**
+**MongoDB vs SQL — which should I choose?**
 
-No. The MongoDB layer is optional. Remove the MongoDB call in the main entry point and the bot will run without it.
+Use the **MongoDB edition** if you prefer a document database with flexible schemas. Use the **SQL edition** if you need relational data integrity, complex queries, or already use SQLite / PostgreSQL / MySQL. Both editions share the same architecture and feature set.
+
+**Do I need a database at all?**
+
+No. The database layer is optional in both editions. Skip the database initialization and the bot will run without it.
 
 **How do I report a bug?**
 
@@ -527,6 +610,10 @@ Open an issue in the specific language repository (e.g., `Discord-Handler-Js/iss
 
 Not yet. This is a framework, not a service. You deploy the bot yourself.
 
+**When will v1.0.0 be released?**
+
+v1.0.0 will be released once every language implementation and database edition reaches full feature parity and stability, complete with testing suites and CI/CD pipelines.
+
 **How do I add a new language?**
 
 Fork the repository, create a new directory under your name, and submit a pull request. See CONTRIBUTING.md for guidelines.
@@ -535,24 +622,19 @@ Fork the repository, create a new directory under your name, and submit a pull r
 
 ## Roadmap
 
-- [x] JavaScript implementation
-- [x] TypeScript implementation
-- [x] Go implementation
-- [x] Rust implementation
-- [x] Python implementation
-- [x] C# implementation
-- [x] Java implementation
-- [x] Kotlin implementation
-- [x] C++ implementation
-- [x] Dart implementation
-- [x] Ruby implementation
-- [x] Lua implementation
-- [x] PHP implementation
-- [ ] Zig implementation
-- [ ] Nim implementation
-- [ ] Swift implementation
-- [ ] Community-driven language templates
-- [ ] Interactive CLI starter wizard
+### Completed — All 26 Implementations
+
+All **13 Core Framework editions** and **13 Database Editions** are implemented and audited. See [ROADMAP.md](ROADMAP.md#completed) for the full completion list.
+
+### Stability Fixes Applied (v0.9.0)
+
+100+ critical bugs fixed across all repos in July 2026 — including missing imports, config placeholders, fire-and-forget promises, memory leaks, SQL injection, security vulnerabilities, and runtime crashes. A full second pass on the TypeScript repository fixed 10 additional issues including malformed webhook URLs, global DNS overrides, empty catch blocks, cooldown leaks, and graceful shutdown handlers.
+
+See [CHANGELOG.md](CHANGELOG.md#090---2026-07-05) for details.
+
+### Remaining for v1.0.0
+
+Testing, CI/CD, documentation, and cross-cutting hardening. See the full [v1.0.0 Release Checklist](ROADMAP.md#v100-release-checklist) for all outstanding items.
 
 Full details: [ROADMAP.md](ROADMAP.md)
 
@@ -596,6 +678,18 @@ Copyright © 2026 Mtrx — Discord: 0hu2
 - **Discordrb** — https://github.com/shardlab/discordrb
 - **Discordia** — https://github.com/SinisterRectus/Discordia
 - **DiscordPHP** — https://github.com/discord-php/DiscordPHP
+- **Sequelize** — https://sequelize.org
+- **GORM** — https://gorm.io
+- **Diesel** — https://diesel.rs
+- **SQLAlchemy** — https://www.sqlalchemy.org
+- **EF Core** — https://learn.microsoft.com/ef/core
+- **Hibernate** — https://hibernate.org
+- **Exposed** — https://github.com/JetBrains/Exposed
+- **sqlpp11** — https://github.com/rbock/sqlpp11
+- **drift** — https://drift.simonbinder.eu
+- **Sequel** — https://sequel.jeremyevans.net
+- **LuaSQL** — https://github.com/lunarmodules/luasql
+- **Eloquent** — https://laravel.com/docs/eloquent
 
 ---
 
