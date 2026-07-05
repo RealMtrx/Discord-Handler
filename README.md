@@ -578,7 +578,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for our code of conduct and the process f
 
 Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
-Copyright © 2026 Mtrx
+Copyright © 2026 Mtrx — Discord: 0hu2
 
 ---
 
@@ -600,5 +600,5 @@ Copyright © 2026 Mtrx
 ---
 
 <div align="center">
-  <sub>Built with ❤️ by the open-source community.</sub>
+  <sub>Built by <strong>Mtrx</strong> — Discord: <strong>0hu2</strong></sub>
 </div>
